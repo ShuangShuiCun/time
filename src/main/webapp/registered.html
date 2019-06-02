@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="日程管理系统" content="多功能日程管理，日记，ssm框架，bootstrap">
+  <title>日程管理系统</title>
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
+  <!--external css-->
+  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet">
+  
+
+</head>
+
+<body>
+  <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+  <div id="registered-page">
+    <div class="container" style="width:700px">
+      <form class="form-login" action="" >
+        <h2 class="form-login-heading">注册</h2>
+        <div class="login-wrap">
+         <input type="text" class="form-control" placeholder="请输入用户名" autofocus name="username">
+          <br>
+          <input type="text" class="form-control" placeholder="请输入邮箱地址" autofocus name="email">
+          <br>
+          <input type="password" class="form-control" placeholder="密码" autofocus name="password">
+          <br>
+           <input type="password" class="form-control" placeholder="确认密码" name="confirmPassword" autofocus/>      
+            <br>
+            <br>
+          <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> 注册</button>
+          <hr>
+          <div class="registration">
+           已有账号？<br/>
+          <a class="" href="login.html">
+              直接登陆
+              </a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+  <!--BACKSTRETCH-->
+  <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+  <script type="text/javascript" src="lib/jquery.backstretch.min.js"></script>
+  <script>
+    $.backstretch("img/login-bg.jpg", {
+      speed: 500
+    });
+  </script>
+  <script>
+     $("#form-registered").bootstrapValidator({
+//		提示的图标
+		feedbackIcons: {
+			valid: 'glyphicon glyphicon-ok',			// 有效的
+            invalid: 'glyphicon glyphicon-remove',		// 无效的
+            validating: 'glyphicon glyphicon-refresh'	// 刷新的
+		},
+//		属性对应的是表单元素的名字
+		fields: {
+//			匹配校验规则
+			username: {
+				// 规则
+				validators: {
+					message: '用户名无效',	// 默认提示信息 
+					notEmpty: {
+                        message: '用户名不能为空'
+                    },                
+                    /*设置错误信息 和规则无关 和后台校验有关系*/
+                    callback: {
+                        message: '用户名错误'
+                    }
+				}
+			},
+			email: {
+				// 规则
+				validators: {
+					message: '邮箱地址无效',	// 默认提示信息 
+					notEmpty: {
+                        message: '邮箱地址不能为空'
+                    },
+                    regexp: {/* 只需加此键值对，包含正则表达式，和提示 */
+                        regexp: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
+                        message: '邮箱地址无效'
+                    },
+                    /*设置错误信息 和规则无关 和后台校验有关系*/
+                    callback: {
+                        message: '邮箱错误'
+                    }           
+				}
+			},
+			
+			password: {
+                validators: {
+                	message: '密码无效',
+                    notEmpty: {
+                        message: '密码不能为空'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 18,
+                        message: '密码在6-18个字符内'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: '含有非法字符'
+                	},
+                    callback: {
+                        message: '密码不正确' 
+                    }
+                }
+            },
+			confirmPassword: {
+                validators: {
+                    notEmpty: {
+                        message: '确认密码不能为空'
+                    },
+                    identical: {
+                       field: 'password',
+                        message: '两次密码不同'
+                    }
+                   
+                }
+            }
+		}
+	}).on('success.form.bv', function (e) { // 表单校验成功
+		/*禁用默认提交的事件 因为要使用ajax提交而不是默认的提交方式*/
+		e.preventDefault();
+		/*获取当前的表单*/
+		var form = $(e.target);	// 可以通过选择器直接选择
+		console.log(form.serialize());	// username=root&password=123456
+		$.ajax({
+			type: "post",
+			url: "/employee/employeeLogin",
+			data: form.serialize(),
+			dataType: 'json',
+			success: function (response) {
+				if (response.success) {
+                    /*登录成功之后的跳转*/
+                    location.href = 'index.html';
+                } else {
+                	// 登录失败
+//              	登录按钮点击后,默认不允许再次点击;登录失败要恢复登录按钮的点击
+//					form.data('bootstrapValidator').disableSubmitButtons(false);
+					form.bootstrapValidator('disableSubmitButtons', false);
+//					指定触发某一个表单元素的的错误提示函数
+					if (response.error == 1000) { // 后台接口如果返回error=1000表示name错误
+//						form.data('bootstrapValidator').updateStatus('username', 'INVALID', 'fun'); // 不能触发
+// 						可以触发
+						form.data('bootstrapValidator').updateStatus('username', 'INVALID', 'callback'); 
+//						form.data('bootstrapValidator').updateStatus('username', 'INVALID').validateField('username');
+//						form.data('bootstrapValidator').updateStatus('username', 'INVALID', 'notEmpty');
+					} else if (response.error == 1001) { // 后台接口如果返回error=1001表示密码错误
+						form.data('bootstrapValidator').updateStatus('password', 'INVALID', 'callback');
+					}
+                }
+			}
+		});
+	});
+  </script>
+</body>
+
+</html>

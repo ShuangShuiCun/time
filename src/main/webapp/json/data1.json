@@ -1,0 +1,44 @@
+﻿{
+  "total":6,
+  "totalNotFiltered": 6,
+  "rows": [
+    {
+      "perID": 1,
+      "roleName": "新建用户",
+      "permissionDesc":"createUser",
+      "Roles": 2
+    },
+    {
+     "perID": 2,
+      "roleName": "修改用户",
+      "permissionDesc":"updateUser",
+      "Roles":2
+    },
+    {
+     "perID": 3,
+      "roleName": "删除用户",
+      "permissionDesc":"deleteUser",
+      "Roles":2
+    },
+ {
+     "perID": 4,
+      "roleName": "查询用户",
+      "permissionDesc":"getUserInfo",
+      "Roles":2
+    },
+ {
+     "perID": 5,
+      "roleName": "查询权限",
+      "permissionDesc":"getPermissionInfo",
+      "Roles":2
+    },
+ {
+     "perID": 6,
+      "roleName": "查询角色",
+      "permissionDesc":"getRoleInfo",
+      "Roles":2
+    }
+  ]
+}
+
+    

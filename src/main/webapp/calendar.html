@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>日程管理系统</title>
+
+<!-- Favicons -->
+<link href="img/favicon.png" rel="icon">
+<link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Bootstrap core CSS -->
+<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!--external css-->
+<link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href='lib/fullcalendar/daygrid/main.css' rel='stylesheet' />
+<link href='lib/fullcalendar/timegrid/main.css' rel='stylesheet' />
+<link href='lib/fullcalendar/list/main.css' rel='stylesheet' />
+<link href="lib/fullcalendar/bootstrap/main.css" rel="stylesheet" />
+<link href="lib/fullcalendar/main.css" rel="stylesheet" />
+<link href='lib/fullcalendar/core/main.css' rel='stylesheet' />
+<link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
+<link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/css/datetimepicker.css" />
+<link rel="stylesheet" type="text/css" href="lib/live2d/waifu.css"/>
+
+<!-- Custom styles for this template -->
+<link href="css/style.css" rel="stylesheet">
+<link href="css/style-responsive.css" rel="stylesheet">
+</head>
+
+<body>
+<section id="container">
+<!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** --> 
+<!--header start-->
+<header class="header black-bg">
+  <div class="sidebar-toggle-box">
+    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+  </div>
+  <!--logo start--> 
+  <a href="index.html" class="logo"><b>日程管理<span>系统</span></b></a> 
+  <!--logo end-->
+  <div class="nav notify-row" id="top_menu"> 
+    <!--  notification start -->
+    <ul class="nav top-menu">
+      <!-- settings start -->
+      <li class="dropdown"> <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> <i class="fa fa-tasks"></i> <span class="badge bg-theme">4</span> </a>
+        <ul class="dropdown-menu extended tasks-bar">
+          <div class="notify-arrow notify-arrow-green"></div>
+          <li>
+            <p class="green">You have 4 pending tasks</p>
+          </li>
+          <li> <a href="index.html#">
+            <div class="task-info">
+              <div class="desc">Dashio Admin Panel</div>
+              <div class="percent">40%</div>
+            </div>
+            <div class="progress progress-striped">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+            </div>
+            </a> </li>
+          <li> <a href="index.html#">
+            <div class="task-info">
+              <div class="desc">Database Update</div>
+              <div class="percent">60%</div>
+            </div>
+            <div class="progress progress-striped">
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"> <span class="sr-only">60% Complete (warning)</span> </div>
+            </div>
+            </a> </li>
+          <li> <a href="index.html#">
+            <div class="task-info">
+              <div class="desc">Product Development</div>
+              <div class="percent">80%</div>
+            </div>
+            <div class="progress progress-striped">
+              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> <span class="sr-only">80% Complete</span> </div>
+            </div>
+            </a> </li>
+          <li> <a href="index.html#">
+            <div class="task-info">
+              <div class="desc">Payments Sent</div>
+              <div class="percent">70%</div>
+            </div>
+            <div class="progress progress-striped">
+              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%"> <span class="sr-only">70% Complete (Important)</span> </div>
+            </div>
+            </a> </li>
+          <li class="external"> <a href="#">See All Tasks</a> </li>
+        </ul>
+      </li>
+      <!-- settings end --> 
+      <!-- inbox dropdown start-->
+      <li id="header_inbox_bar" class="dropdown"> <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> <i class="fa fa-envelope-o"></i> <span class="badge bg-theme">5</span> </a>
+        <ul class="dropdown-menu extended inbox">
+          <div class="notify-arrow notify-arrow-green"></div>
+          <li>
+            <p class="green">You have 5 new messages</p>
+          </li>
+          <li> <a href="index.html#"> <span class="photo"><img alt="avatar" src="img/ui-zac.jpg"></span> <span class="subject"> <span class="from">Zac Snider</span> <span class="time">Just now</span> </span> <span class="message"> Hi mate, how is everything? </span> </a> </li>
+          <li> <a href="index.html#"> <span class="photo"><img alt="avatar" src="img/ui-divya.jpg"></span> <span class="subject"> <span class="from">Divya Manian</span> <span class="time">40 mins.</span> </span> <span class="message"> Hi, I need your help with this. </span> </a> </li>
+          <li> <a href="index.html#"> <span class="photo"><img alt="avatar" src="img/ui-danro.jpg"></span> <span class="subject"> <span class="from">Dan Rogers</span> <span class="time">2 hrs.</span> </span> <span class="message"> Love your new Dashboard. </span> </a> </li>
+          <li> <a href="index.html#"> <span class="photo"><img alt="avatar" src="img/ui-sherman.jpg"></span> <span class="subject"> <span class="from">Dj Sherman</span> <span class="time">4 hrs.</span> </span> <span class="message"> Please, answer asap. </span> </a> </li>
+          <li> <a href="index.html#">See all messages</a> </li>
+        </ul>
+      </li>
+      <!-- inbox dropdown end --> 
+      <!-- notification dropdown start-->
+      <li id="header_notification_bar" class="dropdown"> <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#"> <i class="fa fa-bell-o"></i> <span class="badge bg-warning">7</span> </a>
+        <ul class="dropdown-menu extended notification">
+          <div class="notify-arrow notify-arrow-yellow"></div>
+          <li>
+            <p class="yellow">You have 7 new notifications</p>
+          </li>
+          <li> <a href="index.html#"> <span class="label label-danger"><i class="fa fa-bolt"></i></span> Server Overloaded. <span class="small italic">4 mins.</span> </a> </li>
+          <li> <a href="index.html#"> <span class="label label-warning"><i class="fa fa-bell"></i></span> Memory #2 Not Responding. <span class="small italic">30 mins.</span> </a> </li>
+          <li> <a href="index.html#"> <span class="label label-danger"><i class="fa fa-bolt"></i></span> Disk Space Reached 85%. <span class="small italic">2 hrs.</span> </a> </li>
+          <li> <a href="index.html#"> <span class="label label-success"><i class="fa fa-plus"></i></span> New User Registered. <span class="small italic">3 hrs.</span> </a> </li>
+          <li> <a href="index.html#">See all notifications</a> </li>
+        </ul>
+      </li>
+      <!-- notification dropdown end -->
+    </ul>
+    <!--  notification end --> 
+  </div>
+  <div class="top-menu">
+    <ul class="nav pull-right top-menu">
+      <li><a class="logout" href="login.html">退出</a></li>
+    </ul>
+  </div>
+</header>
+<!--header end--> 
+<!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** --> 
+<!--sidebar start-->
+<aside>
+<div id="sidebar" class="nav-collapse ">
+<!-- sidebar menu start-->
+<ul class="sidebar-menu" id="nav-accordion">
+<p class="centered"><a href="profile.html"><img src="img/user.png" class="img-circle" width="80"></a></p>
+<h5 class="centered">瓦力</h5>
+<li class="mt"> <a href="index.html"> <i class="fa fa-dashboard"></i> <span>首页</span> </a> </li>
+<li class="sub-menu"> <a class="active" href="javascript:;"> <i class="fa fa-desktop"></i> <span>日程安排</span> </a>
+  <ul class="sub">
+    <li class="active"><a href="calendar.html">我的日程</a></li>
+    <li><a href="">日程提醒</a></li>
+  </ul>
+</li>
+<li class="sub-menu"> <a href="javascript:;"> <i class="fa fa-cogs"></i> <span>日记</span> </a>
+  <ul class="sub">
+    <li><a href="diary.html">新建日记</a></li>
+    <li><a href="">所有日记</a></li>
+  </ul>
+</li>
+<li class="sub-menu"> <a href="javascript:;"> <i class="fa fa-book"></i> <span>户外活动</span> </a>
+  <ul class="sub">
+    <li><a href="">每天运动</a></li>
+    <li><a href="form_component.html">活动事项</a></li>
+  </ul>
+</li>
+<li class="sub-menu"> <a href="lock_screen.html"> <i class="fa fa-tasks"></i> <span>系统锁屏</span> </a>
+</li>
+
+<!-- sidebar menu end-->
+</div>
+</aside>
+<!--sidebar end--> 
+<!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** --> 
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper">
+    <!--<h3><i class="fa fa-angle-right"></i> 日程安排</h3>
+    <iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tx&skin=pitaya&city=茂名" frameborder="0" width="285px"   height="30" allowtransparency="true" style="float:right;"></iframe>
+    
+    <div class="row mt">
+      <aside class="col-lg-3 mt">
+        <h4><i class="fa fa-angle-right"></i>说明</h4>
+        <div id="external-events">
+          <div class="external-event label label-theme">My Event 1</div>
+          <div class="external-event label label-success">My Event 2</div>
+          <div class="external-event label label-info">My Event 3</div>
+          <div class="external-event label label-warning">My Event 4</div>
+          <div class="external-event label label-danger">My Event 5</div>
+          <div class="external-event label label-default">My Event 6</div>
+          <div class="external-event label label-theme">My Event 7</div>
+          <div class="external-event label label-info">My Event 8</div>
+          <div class="external-event label label-success">My Event 9</div>
+          <p class="drop-after">
+            <input type="checkbox" id="drop-remove">
+            Remove After Drop </p>
+        </div>
+      </aside>-->
+      <aside class="">
+        <section class="panel">
+          <div class="panel-body">
+            <div id="calendar" style="width:100%"></div>
+          </div>
+        </section>
+      </aside>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="width:500px">
+            <div class="modal-header">
+              <h2 class="modal-title" id="calendarModalLongTitle">新建日程：</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body">
+      
+                <div class="form-group">
+                  <label class="col-form-label" style="font-size:16px">日程事项：</label>
+                  <input type="text" class="form-control" id="newEventText">
+                </div>
+                <div class="form-group">
+                  <label class="radio-inline" style="font-size:13px">
+                    <input type="radio" name="opinion" id="emergency" value="#d95341">
+                    <span class="label-danger"><font color="#FFFFFF">紧急</font></span> </label>
+                  <label class="radio-inline" style="font-size:13px" >
+                    <input type="radio" name="opinion" id="ordinary" value="#5bc0de">
+                   <span class="label-info"><font color="#FFFFFF"> 普通 </font></span></label>
+                  <label class="radio-inline" style="font-size:13px">
+                    <input type="radio" name="opinion" id="secondary" value="#5cb85c">
+                    <span class="label-success"><font color="#FFFFFF">次要</font> </span></label>
+                </div>
+                
+                <div class="form-group">
+                <div>
+                  <label  class="col-form-label" style="font-size:15px;">时间：</label>
+                  </div>
+                  <div class="input-group date form_datetime" style="width:250px;float:left">
+                    <input type="text" class="form-control" name="startTime" readonly size="16">
+                    <div class="input-group-btn">                    
+                      <button type="button" class="btn btn-theme date-set"><i class="fa fa-calendar"></i></button>
+                    </div>
+                    <span class="input-group-addon" style="background-color:#0FF">To</span>
+                  </div>               
+                  <div class="input-group date form_datetime" style="width:210px;float:left">
+                    <input type="text" class="form-control" name="endTime" readonly size="16">
+                    <div class="input-group-btn">
+                      <button type="button" class="btn btn-theme date-set"><i class="fa fa-calendar"></i></button>
+                    </div>
+                  </div>
+                  <div id="id3" style="clear:both"></div>
+                </div>
+               
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label" style="font-size:15px">详细内容:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary" id="saveEvent">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!--modal2-->
+    <div class="modal fade" id="modifyCalendar" tabindex="-1" role="dialog" aria-labelledby="calendarModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="width:500px">
+            <div class="modal-header">
+              <h2 class="modal-title">编辑日程：</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body">
+      
+                <div class="form-group">
+                  <label  class="col-form-label" style="font-size:16px">日程事项：</label>
+                  <input type="text" class="form-control" id="EventText" value="">
+                </div>
+                <div class="form-group">
+                  <label class="radio-inline" >
+                    <input type="radio" name="opinions" value="#d95341" id="Eemergency">
+                   <span class="laber label-danger"><font color="#FFFFFF">紧急</font></span>  </label>
+                  <label class="radio-inline" >
+                    <input type="radio" name="opinions" id="Eordinary" value="#5bc0de">
+                    <span class="laber label-info"><font color="#FFFFFF"> 普通</font> </span> </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="opinions" id="Esecondary" value="#5cb85c">
+                     <span class="laber label-success"><font color="#FFFFFF">次要 </font></span> </label>                     
+              </div> 
+			
+                <div class="form-group">
+                <div>
+                  <label  class="col-form-label" style="font-size:15px;">时间：</label>
+                  </div>
+                  <div class="input-group date form_datetime" style="width:250px;float:left">
+                    <input type="text" class="form-control" name="startTime1" readonly size="16">
+                    <div class="input-group-btn">                    
+                      <button type="button" class="btn btn-theme date-set"><i class="fa fa-calendar"></i></button>
+                    </div>
+                    <span class="input-group-addon" style="background-color:#0FF">To</span>
+                  </div>               
+                  <div class="input-group date form_datetime" style="width:210px;float:left">
+                    <input type="text" class="form-control" name="endTime1" readonly size="16">
+                    <div class="input-group-btn">
+                      <button type="button" class="btn btn-theme date-set"><i class="fa fa-calendar"></i></button>
+                    </div>
+                  </div>
+                </div>
+               
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label" style="font-size:15px">详细内容:</label>
+                  <textarea class="form-control" id="message"></textarea>
+                 
+                </div>
+              
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary" id="deleteEvent">删除</button>
+              <button type="button" class="btn btn-primary" id="modifyEvent">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/modal-->
+    <!-- page end--> 
+  </section>
+  <!-- /wrapper --> 
+</section>
+<!-- /MAIN CONTENT --> 
+<!--main content end-->
+<div class="waifu">      
+        <canvas id="live2d" width="280" height="250"  ></canvas>       
+    </div>
+</section>
+<!-- js placed at the end of the document so the pages load faster --> 
+<script src="lib/jquery/jquery.min.js"></script> 
+<script src="lib/jquery-ui-1.9.2.custom.min.js"></script> 
+<script src="lib/bootstrap/js/bootstrap.min.js"></script> 
+<script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script> 
+<script src="lib/jquery.scrollTo.min.js"></script> 
+<script src="lib/jquery.nicescroll.js" type="text/javascript"></script> 
+<!--common script for all pages--> 
+<script src="lib/common-scripts.js"></script> 
+<script src="lib/live2d/waifu-tips.js"></script>
+<script src="lib/live2d/live2d.js"></script>
+<!--script for this page--> 
+<script src="lib/calendar-conf-events.js"></script> 
+<script src="lib/fullcalendar/locales-all.js"></script> 
+<script src="lib/fullcalendar/main.js"></script> 
+<script src='lib/fullcalendar/interaction/main.js'></script> 
+<script src='lib/fullcalendar/daygrid/main.js'></script> 
+<script src='lib/fullcalendar/timegrid/main.js'></script> 
+<script src='lib/fullcalendar/list/main.js'></script> 
+<script src='lib/fullcalendar/core/main.js'></script> 
+<script src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script> 
+<script src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.zh-CN.js"></script> 
+<script src="lib/advanced-form-components.js"></script>
+<script>
+window.onload=function() {
+initModel("live2d/");
+}
+</script>
+</body>
+</html>

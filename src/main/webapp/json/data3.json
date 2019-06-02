@@ -1,0 +1,26 @@
+﻿{
+  "total":3,
+  "totalNotFiltered": 3,
+  "rows": [
+    {
+      "roleId": 1,
+      "roleName": "用户",
+      "RoleDetile":"用户",
+      "UserEmail":"123456@test.com"
+    },
+    {
+      "roleId": 2,
+      "roleName": "超级管理员",
+      "RoleDetile":"负责系统管理",
+      "UserEmail":"123@test.com"
+    },
+    {
+      "roleId": 3,
+      "roleName": "测试",
+      "RoleDetile":"系统测试",
+      "UserEmail":"12345@test.com"
+    }
+  ]
+}
+
+    

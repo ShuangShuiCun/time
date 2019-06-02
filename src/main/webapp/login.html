@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="日程管理" content="多功能日程管理系统，ssm框架">
+  <title>日程管理系统</title>
+
+  <!-- Favicons -->
+  <link href="./img/favicon.png" rel="icon">
+  <link href="./img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="./lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!--external css-->
+  <link href="./lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="./https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/style-responsive.css" rel="stylesheet">
+  
+
+</head>
+
+<body>
+  <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+  <div id="login-page">
+    <div class="container" > 
+      <form class="form-login" id="loginForm">
+        <h2 class="form-login-heading">登陆</h2>  
+        <div class="form-group" style="padding:25px 20px 0px 20px;">      
+            <input type="text" class="form-control" name="email" id="emailid" placeholder="请输入邮箱地址" autofocus>
+      </div>
+      <div class="form-group" style="padding:0px 20px;">  
+          <input type="password" class="form-control" name="password" placeholder="密码">
+     </div>
+          <label class="checkbox" style="margin-left:32px">
+            <input type="checkbox" value="remember-me"> 记住密码
+            <span class="pull-right">
+            <a data-toggle="modal" href="login.html#myModal"> 忘记密码?</a>
+            </span>
+            </label>
+          <button class="btn btn-theme btn-block" type="submit" id="validateBtn"><i class="fa fa-lock"></i> 登陆</button>
+          <hr>
+          <div class="registration" style="margin-left:132px">
+           还没有账号？<br/>
+            <a class="" href="registered.html" style="margin-left:18px">
+              注册
+              </a>
+          </div>
+      </form>
+    </div>
+
+        <!-- Modal -->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">找回密码</h4>
+              </div>
+              <div class="modal-body">
+                <p>输入你的邮箱找回密码</p>
+                <input type="text" name="choseEmail" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+              </div>
+              <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                <button class="btn btn-theme" type="button">确定</button>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+        <!-- modal -->
+    
+    </div>
+  </div>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="./lib/jquery/jquery.min.js"></script>
+  <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+  <!--BACKSTRETCH-->
+  <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+  <script type="text/javascript" src="./lib/jquery.backstretch.min.js"></script>
+  <script>
+    $.backstretch("img/login.jpg", {
+      speed: 500
+    });
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+     $("#loginForm").bootstrapValidator({
+//		提示的图标
+		feedbackIcons: {
+			valid: 'glyphicon glyphicon-ok',			// 有效的
+            invalid: 'glyphicon glyphicon-remove',		// 无效的
+            validating: 'glyphicon glyphicon-refresh'	// 刷新的
+		},
+//		属性对应的是表单元素的名字
+		fields: {
+//			匹配校验规则
+			email: {
+				// 规则
+				validators: {
+					message: '邮箱地址错误',	// 默认提示信息 
+					notEmpty: {
+                        message: '邮箱地址不能为空'
+                    },
+                    regexp: {/* 只需加此键值对，包含正则表达式，和提示 */
+                        regexp:/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
+                        message: '邮箱地址错误'
+                    },
+                    /*设置错误信息 和规则无关 和后台校验有关系*/
+                  callback: {
+                        message: '邮箱地址或密码错误'
+                    },/*  
+                    fun: {
+                    	message: 'fun函数无效的示例'
+                    }*/
+				}
+			},
+			password: {
+                validators: {
+                	message: '密码不能为空',
+                    notEmpty: {
+                        message: '密码不能为空'
+                    },
+                   /* stringLength: {
+                        min: 6,
+                        max: 18,
+                        message: '密码在6-18个字符内'
+                    },*/
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9]{6,15}$/,
+                        message: '字母和数字组成且长度不低于6'
+                	},
+                    callback: {
+                        message: '邮箱地址或密码错误' 
+                    }
+                }
+            }
+		}
+	}).on('success.form.bv', function (e) { // 表单校验成功
+		/*禁用默认提交的事件 因为要使用ajax提交而不是默认的提交方式*/
+       var mailname = $("input[id='emailid']").val();
+       if (mailname=='123@test.com') {
+         window.location='main.html';
+       }else if (mailname=='123456@test.com'){
+         window.location='index.html';
+       } else {
+         setTimeout(function(){ alert("邮箱地址或密码错误"); }, 3000);
+       }
+//		e.preventDefault();
+		/*获取当前的表单*/
+		var form = $(e.target);	// 可以通过选择器直接选择
+
+		console.log(form.serialize());	// username=root&password=123456
+       /*		$.ajax({
+                   type:"post",
+                   url: "/userLogin",
+                   data: form.serialize(),
+                   dataType: 'json',
+                   success: function (response) {
+                       if (response.success) {
+                           /!*登录成功之后的跳转*!/
+                           location.href = 'index.html';
+                       } else {
+                           // 登录失败
+       //              	登录按钮点击后,默认不允许再次点击;登录失败要恢复登录按钮的点击
+       //					form.data('bootstrapValidator').disableSubmitButtons(false);
+                           form.bootstrapValidator('disableSubmitButtons', false);
+                           form.data('bootstrapValidator').updateStatus('email', 'INVALID', 'callback');
+                       }
+                   }
+		});*/
+	});
+     $('#validateBtn').click(function() {
+       $('#loginForm').bootstrapValidator('validate');
+
+     });
+});
+  </script>
+</body>
+
+</html>
