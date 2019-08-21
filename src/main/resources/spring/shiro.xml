@@ -23,7 +23,7 @@
                 <!--/test=anon-->
                 /index.html = anon
                 /admin.html = roles[sys_admin]
-               <!-- /index.html= authc-->
+                <!-- /index.html= authc-->
             </value>
         </property>
     </bean>

@@ -3,6 +3,7 @@ package cn.ljf.time.controller;
 import cn.ljf.time.model.User;
 import cn.ljf.time.service.LoginService;
 import cn.ljf.time.service.UserService;
+import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -21,6 +22,7 @@ import java.util.List;
 public class UserController {
     @Resource
     private UserService userService;
+    private static Logger logger = Logger.getLogger("onelogger");
 
 
     @RequestMapping(value = "/userLogin",method={RequestMethod.GET,RequestMethod.POST})
@@ -83,6 +85,7 @@ public class UserController {
     @RequestMapping(value="/test",method={RequestMethod.GET,RequestMethod.POST})
     public @ResponseBody List<User> getUser(){
         System.out.println("hello Controller");
+        logger.debug("hello bug");
         return userService.getUser();
 
     }
